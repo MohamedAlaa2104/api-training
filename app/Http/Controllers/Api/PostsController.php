@@ -16,7 +16,7 @@ class PostsController extends Controller
     use ApiResponse;
 
     public function index () {
-        $data = PostsResource::collection(Post::get());
+        $data = PostsResource::collection(Post::paginate(5));
 
         return response($this->ApiResponse($data, 'ok'), 200);
     }
